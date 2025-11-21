@@ -199,6 +199,7 @@ async def clear_messages(user_id: str):
 
 if __name__ == "__main__":
     import uvicorn
+    import os
     print("\n" + "="*80)
     print("🚀 STARTING FASTAPI CHATBOT SERVER")
     print("="*80)
@@ -206,4 +207,5 @@ if __name__ == "__main__":
     print("📚 API docs at: http://localhost:8000/docs")
     print("="*80 + "\n")
     
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
